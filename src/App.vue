@@ -1,6 +1,6 @@
 <template>
-    <NavBar />
-    <router-view />
+  <NavBar />
+  <router-view />
 </template>
 
 <script>
@@ -24,5 +24,10 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", "Segoe UI", sans-serif;
+  background: var(--color-bg);
 }
 </style>

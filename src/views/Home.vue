@@ -10,9 +10,27 @@
             </h1>
           </app-spacer>
           <app-spacer textCenter>
-            <base-button>Junte-se Agora </base-button>
+            <base-button>Junte-se Agora</base-button>
           </app-spacer>
         </div>
+      </app-container>
+      <app-container>
+        <main class="main">
+          <section class="main__highlight">
+            <div
+              class="main__highlight-wrapper"
+              v-for="recipe in recipes"
+              :key="recipe.id"
+            >
+              <RecipeCard
+                :subtitle="recipe.subtitle"
+                :title="recipe.title"
+                :author="recipe.author"
+                :imagePath="recipe.image"
+              />
+            </div>
+          </section>
+        </main>
       </app-container>
     </div>
   </div>
@@ -20,13 +38,39 @@
 </template>
 
 <script>
-import BaseButton from "@/components/BaseButton.vue";
+import RecipeCard from "@/components/RecipeCard.vue";
 
 export default {
   components: {
-    BaseButton,
+    RecipeCard,
   },
-  setup() {},
+  setup() {
+    const recipes = [
+      {
+        id: "1",
+        subtitle: "Receita do dia",
+        title: "Dobrada de Vaca com Xima",
+        author: "Alberto Martins",
+        image: "assets/hero.jpg",
+      },
+      {
+        id: "1",
+        subtitle: "Gastronomia Moçambicana",
+        title: "Matapa Com Carrangueijo",
+        author: "Alberto Martins",
+        image: "@/assets/hero.jpg",
+      },
+      {
+        id: "1",
+        subtitle: "Ingrediente da semana - Maçã",
+        title: "Torta de Maçã Com Caramelo",
+        author: "Alberto Martins",
+        image: "@/assets/hero.jpg",
+      },
+    ];
+
+    return { recipes };
+  },
 };
 </script>
 
@@ -66,6 +110,21 @@ export default {
     display: flex;
     flex-direction: column;
     color: var(--color-text-light);
+  }
+}
+
+.main {
+  margin-top: 20.5rem;
+  /* border: 1px solid red; */
+
+  &__highlight {
+    position: relative;
+    z-index: var(--stack-2);
+    margin-top: -4rem;
+  }
+
+  &__highlight-wrapper {
+    margin-bottom: 1rem;
   }
 }
 </style>

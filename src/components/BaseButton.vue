@@ -34,6 +34,7 @@ export default {
   min-width: 5rem;
   border: 2px solid transparent;
   border-radius: 0.25rem;
+  text-transform: uppercase;
 
   &:hover {
     cursor: pointer;
