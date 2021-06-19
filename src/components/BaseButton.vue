@@ -1,5 +1,5 @@
 <template>
-  <button class="button" :class="[buttonType, isRounded]">
+  <button class="button" :class="[buttonType]" :style="cssVars">
     <slot></slot>
   </button>
 </template>
@@ -11,19 +11,28 @@ export default {
     type: { type: String },
     outlined: { type: Boolean, default: false },
     rounded: { type: Boolean, default: false },
+    textButton: { type: Boolean, default: false },
   },
   setup(props) {
-    const buttonType = computed(() => {
-      return `button-${props.type === "secondary" ? "secondary" : "primary"}${
-        props.outlined ? "-outlined" : ""
-      }`;
+    const cssVars = computed(() => {
+      return {
+        "--color-button":
+          props.type === "secondary"
+            ? "var(--color-button-secondary)"
+            : "var(--color-button-primary)",
+      };
     });
 
-    const isRounded = computed(() => ({
-      "button-rounded": props.rounded,
-    }));
+    const buttonType = computed(() => {
+      return {
+        "is-outlined": props.outlined,
+        "is-text-button": props.textButton,
+        "is-rounded": props.rounded,
+        "is-default": !props.outlined && !props.textButton && !props.rounded,
+      };
+    });
 
-    return { buttonType, isRounded };
+    return { buttonType, cssVars };
   },
 };
 </script>
@@ -47,26 +56,30 @@ export default {
   }
 }
 
-.button-primary {
-  background-color: var(--color-button-primary);
-  color: var(--color-text-light);
-}
-.button-primary-outlined {
+.is-outlined {
+  border-color: var(--color-button);
   background-color: transparent;
-  border-color: var(--color-button-primary);
-  color: var(--color-button-primary);
-}
-.button-secondary {
-  background-color: var(--color-button-secondary);
-  color: var(--color-text-light);
-}
-.button-secondary-outlined {
-  background-color: transparent;
-  border-color: var(--color-button-secondary);
-  color: var(--color-button-secondary);
+  color: var(--color-button);
 }
 
-.button-rounded {
+.is-rounded {
   border-radius: 100px;
+}
+
+.is-text-button {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.is-text-button {
+  border-color: transparent;
+  background-color: transparent;
+  color: var(--color-button);
+}
+
+.is-default {
+  border-color: var(--color-button);
+  background-color: var(--color-button);
+  color: var(--color-text-light);
 }
 </style>

@@ -1,16 +1,33 @@
 <template>
-  <NavBar />
-  <router-view />
+  <NavBar :colorize="isTransparent" />
+  <div class="wrapper" @scroll="handleScroll">
+    <router-view />
+  </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import { computed, ref } from "vue";
+import { useRoute } from "vue-router";
 
 export default {
   components: {
     NavBar,
   },
-  setup() {},
+  setup() {
+    const colorize = ref(false);
+    const route = useRoute();
+
+    const isTransparent = computed(() => {
+      return route.path === "/" && colorize.value;
+    });
+
+    const handleScroll = (event) => {
+      colorize.value = event.target.scrollTop >= 30;
+    };
+
+    return { handleScroll, isTransparent };
+  },
 };
 </script>
 
@@ -29,5 +46,10 @@ export default {
 body {
   font-family: "Work Sans", "Segoe UI", sans-serif;
   background: var(--color-bg);
+}
+
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
 }
 </style>

@@ -15,6 +15,7 @@ export default {
   },
   setup(props) {
     const spacing = {
+      none: 0,
       xs: "0.125rem",
       sm: "0.25rem",
       base: "0.5rem",
