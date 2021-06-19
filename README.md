@@ -1,5 +1,7 @@
 # moz-sabores
 
+Demo de um website de culinária contruido com vue.js
+
 ## Project setup
 ```
 yarn install
