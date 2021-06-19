@@ -4,10 +4,10 @@
       <app-container>
         <div class="home__text-box">
           <app-spacer mb="lg">
-            <h1 class="home__heading">
+            <base-heading class="home__heading" defaultColor>
               <span>Seu Paladar</span>
               <span>A Merce De Um Click</span>
-            </h1>
+            </base-heading>
           </app-spacer>
           <app-spacer textCenter>
             <base-button>Junte-se Agora</base-button>
@@ -78,7 +78,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   &__header {
-    height: 25rem;
+    height: 40rem;
     background: url("../assets/hero.jpg") no-repeat;
     background-position: center;
     background-size: cover;
@@ -90,7 +90,7 @@ export default {
       position: absolute;
       top: 0;
       left: 0;
-      height: 25rem;
+      height: 40rem;
       width: 100%;
       background-color: var(--color-hero-overlay);
     }
@@ -102,7 +102,7 @@ export default {
     left: 50%;
     transform: translate(-50%, -55%);
     z-index: var(--stack-first);
-    max-width: 20rem;
+    max-width: 32rem;
     width: 100%;
   }
 
@@ -114,7 +114,7 @@ export default {
 }
 
 .main {
-  margin-top: 20.5rem;
+  margin-top: 32rem;
 
   &__highlight {
     position: relative;
@@ -123,7 +123,7 @@ export default {
   }
 
   &__highlight-wrapper {
-    margin-bottom: 1rem;
+    margin-bottom: 1.6rem;
   }
 }
 </style>

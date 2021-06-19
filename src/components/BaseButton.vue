@@ -39,20 +39,16 @@ export default {
 
 <style lang="scss" scoped>
 .button {
-  padding: 0.75rem 1rem;
-  min-width: 5rem;
+  padding: .8rem 1.6rem;
+  min-width: .8rem;
   border: 2px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: .4rem;
   text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: .06em;
 
   &:hover {
     cursor: pointer;
-  }
-
-  &:active {
-  }
-
-  &:focus {
   }
 }
 
@@ -81,5 +77,6 @@ export default {
   border-color: var(--color-button);
   background-color: var(--color-button);
   color: var(--color-text-light);
+  box-shadow: var(--shadow);
 }
 </style>

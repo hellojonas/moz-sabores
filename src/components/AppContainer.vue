@@ -8,6 +8,6 @@
 .container {
   max-width: 1440;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.6rem;
 }
 </style>

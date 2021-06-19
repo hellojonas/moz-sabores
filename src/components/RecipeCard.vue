@@ -32,16 +32,16 @@ export default {
 
 <style lang="scss" scoped>
 .recipe {
-  max-width: 21rem;
+  max-width: 34rem;
   width: 100%;
-  border-radius: 0.625rem;
+  border-radius: 1rem;
   overflow: hidden;
   box-shadow: var(--shadow);
   background-color: var(--color-secondary);
 
   &__image-box {
     width: 100%;
-    height: 12rem;
+    height: 19.2rem;
   }
 
   &__image {
@@ -53,18 +53,18 @@ export default {
   }
 
   &__description {
-    padding: 0.75rem 1rem 0;
-    margin-bottom: 1rem;
+    padding: 1.2rem 1.6rem 0;
+    margin-bottom: 1.6rem;
   }
 
   &__author {
     color: var(--color-text-body);
     font-style: italic;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 
   &__controls {
-    padding-bottom: 0.75rem;
+    padding-bottom: 1.2rem;
     text-align: center;
   }
 }

@@ -16,13 +16,13 @@ export default {
   setup(props) {
     const spacing = {
       none: 0,
-      xs: "0.125rem",
-      sm: "0.25rem",
-      base: "0.5rem",
-      md: "1rem",
-      lg: "1.5rem",
-      xl: "2rem",
-      "2xl": "4rem",
+      xs: "0.2rem",
+      sm: "0.4rem",
+      base: ".8rem",
+      md: "1.6rem",
+      lg: "2.4rem",
+      xl: "3.2rem",
+      "2xl": "6.4rem",
     };
 
     const sizes = computed(() => ({

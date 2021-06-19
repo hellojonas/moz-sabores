@@ -161,8 +161,9 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.4rem;
+    padding: .4rem;
     color: var(--color-text-light);
+    font-size: 1.8rem;
 
     &:hover {
       cursor: pointer;
@@ -176,12 +177,12 @@ export default {
     right: 0;
     width: 70vw;
     background: var(--color-menu);
-    padding: 0 1rem;
+    padding: 0 1.6rem;
   }
 
   &__nav-list {
     height: 92vh;
-    padding-top: 5rem;
+    padding-top: 8rem;
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -190,21 +191,26 @@ export default {
   &__nav-account {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 4rem;
+    margin-bottom: 6.4rem;
   }
 
   &__nav-links {
     display: flex;
     flex-direction: column;
+    font-size: 1.4rem;
   }
 
   &__nav-item {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.4rem;
   }
 
   &__nav-link {
     text-decoration: none;
     color: var(--color-text-dark);
+
+    &:hover {
+      color: var(--color-tertiary);
+    }
   }
 
   &__social {
@@ -212,6 +218,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.6rem;
   }
 
   &__social-icon {
@@ -223,7 +230,7 @@ export default {
     }
 
     &:not(:last-child) {
-      margin-right: 0.5rem;
+      margin-right: .8rem;
     }
   }
 }

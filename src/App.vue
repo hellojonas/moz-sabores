@@ -43,9 +43,14 @@ export default {
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: "Work Sans", "Segoe UI", sans-serif;
   background: var(--color-bg);
+  font-size: 1.2rem;
 }
 
 .wrapper {
