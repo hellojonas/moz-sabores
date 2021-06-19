@@ -1,7 +1,7 @@
 <template>
   <div class="recipe">
     <div class="recipe__image-box">
-      <img src="../assets/hero.jpg" alt="" class="recipe__image" />
+      <img :src="imagePath" alt="" class="recipe__image" />
     </div>
     <div class="recipe__description">
       <app-spacer mb="sm">
@@ -60,7 +60,7 @@ export default {
   &__author {
     color: var(--color-text-body);
     font-style: italic;
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
 
   &__controls {

@@ -51,21 +51,21 @@ export default {
         subtitle: "Receita do dia",
         title: "Dobrada de Vaca com Xima",
         author: "Alberto Martins",
-        image: "assets/hero.jpg",
+        image: require("../assets/img-1.jpg")
       },
       {
-        id: "1",
+        id: "2",
         subtitle: "Gastronomia Moçambicana",
         title: "Matapa Com Carrangueijo",
         author: "Alberto Martins",
-        image: "@/assets/hero.jpg",
+        image: require("../assets/img-2.jpg")
       },
       {
-        id: "1",
+        id: "3",
         subtitle: "Ingrediente da semana - Maçã",
         title: "Torta de Maçã Com Caramelo",
         author: "Alberto Martins",
-        image: "@/assets/hero.jpg",
+        image: require("../assets/img-3.jpg")
       },
     ];
 
@@ -115,7 +115,6 @@ export default {
 
 .main {
   margin-top: 20.5rem;
-  /* border: 1px solid red; */
 
   &__highlight {
     position: relative;
