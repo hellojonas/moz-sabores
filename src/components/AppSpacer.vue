@@ -26,8 +26,8 @@ export default {
     };
 
     const sizes = computed(() => ({
-      "--mt": spacing[props.mt],
-      "--mb": spacing[props.mb],
+      "--mt": spacing[props.mt || "none"],
+      "--mb": spacing[props.mb || "none"],
     }));
 
     const classes = computed(() => ({
