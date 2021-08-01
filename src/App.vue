@@ -45,6 +45,14 @@ export default {
 
 html {
   font-size: 62.5%;
+
+  @media only screen and (min-width: 706px) {
+    font-size: 87.5%;
+  }
+
+  @media only screen and (min-width: 900px) {
+    font-size: 100%;
+  }
 }
 
 body {

@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 .recipe {
-  max-width: 34rem;
+  max-width: 60rem;
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
