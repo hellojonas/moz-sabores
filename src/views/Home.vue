@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="home__header">
+    <div class="home__header" id="home" ref="homeRef">
       <app-container>
         <div class="home__text-box">
           <app-spacer mb="lg">
@@ -16,7 +16,7 @@
       </app-container>
       <main class="main">
         <app-container>
-          <section class="main__highlight">
+          <section class="main__highlight" id="highligth">
             <div
               class="main__highlight-wrapper"
               v-for="recipe in recipes"
@@ -31,7 +31,7 @@
             </div>
           </section>
 
-          <section class="main__browse">
+          <section ref="searchRef" class="main__browse" id="search">
             <app-spacer mb="md" text-center>
               <base-heading type="secondary">Procurar Receita</base-heading>
             </app-spacer>
@@ -52,7 +52,7 @@
               </app-spacer>
             </div>
 
-            <section class="main__popular">
+            <section class="main__popular" id="popular">
               <app-spacer mb="md">
                 <base-heading type="tertiary">Receitas Populares</base-heading>
               </app-spacer>
@@ -77,7 +77,7 @@
 
         <div class="section-separator">
           <app-container>
-            <section class="main__add">
+            <section class="main__add" id="new">
               <app-spacer mb="base">
                 <base-heading type="secondary">Nova receita</base-heading>
               </app-spacer>
@@ -100,7 +100,7 @@
         </div>
 
         <app-container>
-          <section class="main__chefs">
+          <section ref="chefsRef" class="main__chefs" id="chefs">
             <app-spacer mb="base">
               <base-heading type="secondary">Chefes Populares</base-heading>
             </app-spacer>
@@ -128,7 +128,7 @@
 
         <div class="section-separator">
           <app-container>
-            <section class="main__signup">
+            <section ref="signup" class="main__signup" id="signup">
               <app-spacer mb="lg">
                 <base-heading :level="2">
                   Criar Conta
@@ -181,6 +181,11 @@
 </template>
 
 <script>
+// TODO: links to sections
+// FIX: Navigation in Large
+// TODO: Hover on highliht recipe card
+// FIX: Responsivity on highlight recipe card
+
 import RecipeCard from "@/components/RecipeCard.vue";
 import { Magnify, ArrowRight, Facebook, Twitter, Instagram } from "mdue";
 import "vue3-carousel/dist/carousel.css";
@@ -188,7 +193,7 @@ import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import ChefCard from "@/components/ChefCard.vue";
 import TextInput from "@/components/TextInput.vue";
 import InputLabel from "@/components/InputLabel.vue";
-import { computed } from "vue";
+import { computed, inject, ref } from "vue";
 import BaseButton from "../components/BaseButton.vue";
 import AppLogo from "@/components/AppLogo.vue";
 import { useMediaQuery } from "@vueuse/core";
@@ -271,7 +276,25 @@ export default {
 
     const isMidScreen = useMediaQuery("(min-width: 600px)");
 
-    return { recipes, chefs, rightAlign, isMidScreen };
+    let sectionRefs = inject("sectionRefs");
+
+    const chefsRef = ref(null);
+    const searchRef = ref(null);
+    const homeRef = ref(null);
+
+    sectionRefs["homeRef"] = homeRef;
+    sectionRefs["searchRef"] = searchRef;
+    sectionRefs["chefsRef"] = chefsRef;
+
+    return {
+      recipes,
+      chefs,
+      rightAlign,
+      isMidScreen,
+      chefsRef,
+      searchRef,
+      homeRef,
+    };
   },
 };
 </script>
@@ -319,9 +342,14 @@ export default {
 
   &__highlight {
     position: relative;
-    z-index: var(--stack-2);
+    // z-index: var(--stack-2);
     margin-top: -4rem;
     margin-bottom: 4rem;
+
+    // & > *:hover {
+    //   border: 5px solid red;
+    //   z-index: var(--stack-4);
+    // }
 
     @media only screen and (min-width: 1100px) {
       position: relative;
@@ -331,8 +359,8 @@ export default {
 
   &__highlight-wrapper {
     margin: 0 auto 1.6rem auto;
-    max-width: 60rem;
-
+    max-width: 42rem;
+    
     @media only screen and (min-width: 1100px) {
       position: absolute;
       width: 50rem;
@@ -356,20 +384,37 @@ export default {
     }
 
     @media only screen and (min-width: 1180px) {
+      transition: transform 200ms;
       &:nth-child(1) {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+
+        &:hover {
+          transform: translateX(-50%) scale(1.1);
+        }
       }
       &:nth-child(2) {
         top: 10%;
         left: 10%;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
       &:nth-child(3) {
         top: 15%;
         right: 10%;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
+  }
+
+  &__highlight > *:hover {
+    z-index: var(--stack-4);
   }
 
   &__browse {
@@ -463,21 +508,27 @@ export default {
     display: flex;
     align-content: center;
 
+    justify-content: center;
     @media only screen and (min-width: 520px) {
-      justify-content: center;
+      // height: 300rem;
     }
 
-    @media only screen and (min-width: 840px) {
-      position: relative;
-      height: 40rem;
+    @media only screen and (min-width: 1300px) {
       background: url("../assets/account.svg") no-repeat;
       background-size: contain;
       background-position: left;
       justify-content: flex-end;
       align-items: center;
+      height: 30rem;
     }
-    @media only screen and (min-width: 1120px) {
-      height: 60rem;
+
+    @media only screen and (min-width: 1500px) {
+      height: 35rem;
+      padding-right: 10rem;
+    }
+
+    @media only screen and (min-width: 1700px) {
+      height: 40rem;
     }
   }
 
@@ -486,7 +537,7 @@ export default {
 
     @media only screen and (min-width: 520px) {
       flex: 0 0 50rem;
-      }
+    }
     @media only screen and (min-width: 840px) {
       flex: 0 0 45rem;
     }

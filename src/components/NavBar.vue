@@ -36,6 +36,7 @@
                   v-for="link in links"
                   :key="link.label"
                   @click.prevent="closeMenu"
+                  :ref="link.ref"
                 >
                   <router-link :to="link.to" class="menu__nav-link">
                     {{ link.label }}
@@ -63,7 +64,7 @@
 import { Menu, Close, Facebook, Twitter, Instagram } from "mdue";
 import AppLogo from "./AppLogo.vue";
 import { useRoute } from "vue-router";
-import { computed, ref } from "vue";
+import { computed, inject, ref } from "vue";
 
 export default {
   components: {
@@ -96,10 +97,10 @@ export default {
 
     const togglerColor = computed(() => ({ "toggler-dark": showMenu.value }));
 
-    const links = [
-      { to: "#", label: "Início" },
-      { to: "#", label: "Procurar" },
-      { to: "#", label: "Chefs" },
+    let links = [
+      { to: "#home", label: "Início", el: "homeRef" },
+      { to: "#search", label: "Procurar", el: "searchRef" },
+      { to: "#chefs", label: "Chefs", el: "chefsRef" },
     ];
 
     const socialIcons = [
@@ -125,6 +126,18 @@ export default {
       },
     ];
 
+    const sectionRefs = inject("sectionRefs");
+
+    console.log(sectionRefs);
+
+    const goTo = (el) => {
+      const top = sectionRefs[el]?.value?.offsetTop;
+      const left = sectionRefs[el]?.value?.offsetLeft;
+      console.log(left, top);
+
+      window.scrollTo(left, top);
+    };
+
     return {
       isHome,
       colorizeNav,
@@ -135,6 +148,7 @@ export default {
       links,
       socialIcons,
       accountLinks,
+      goTo,
     };
   },
 };
@@ -161,7 +175,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .4rem;
+    padding: 0.4rem;
     color: var(--color-text-light);
     font-size: 1.8rem;
 
@@ -176,6 +190,20 @@ export default {
     top: 0;
     right: 0;
     width: 70vw;
+    @media only screen and (min-width: 600px) {
+      width: 60vw;
+    }
+    @media only screen and (min-width: 600px) {
+      width: 50vw;
+    }
+
+    @media only screen and (min-width: 1100px) {
+      width: 30vw;
+    }
+    @media only screen and (min-width: 1200px) {
+      width: 25vw;
+    }
+
     background: var(--color-menu);
     padding: 0 1.6rem;
   }
@@ -230,7 +258,7 @@ export default {
     }
 
     &:not(:last-child) {
-      margin-right: .8rem;
+      margin-right: 0.8rem;
     }
   }
 }

@@ -7,7 +7,7 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
-import { computed, ref } from "vue";
+import { computed, ref, provide } from "vue";
 import { useRoute } from "vue-router";
 
 export default {
@@ -26,13 +26,16 @@ export default {
       colorize.value = event.target.scrollTop >= 30;
     };
 
+    const sectionRefs = {};
+
+    provide("sectionRefs", sectionRefs);
+
     return { handleScroll, isTransparent };
   },
 };
 </script>
 
-<style src="@/config/variable.css">
-</style>
+<style src="@/config/variable.css"></style>
 
 <style lang="scss">
 *,
