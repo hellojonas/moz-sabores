@@ -342,7 +342,7 @@ export default {
 
   &__highlight {
     position: relative;
-    // z-index: var(--stack-2);
+    z-index: var(--stack-2);
     margin-top: -4rem;
     margin-bottom: 4rem;
 
